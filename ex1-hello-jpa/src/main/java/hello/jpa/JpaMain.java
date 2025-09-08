@@ -4,7 +4,7 @@
 //import jakarta.persistence.EntityManagerFactory;
 //import jakarta.persistence.EntityTransaction;
 //import jakarta.persistence.Persistence;
-//import jpabook.jpashop.domain.Member;
+//import jpabook.jpashop.domain.entity.Member;
 //
 //public class JpaMain {
 //    public static void main(String[] args) {
