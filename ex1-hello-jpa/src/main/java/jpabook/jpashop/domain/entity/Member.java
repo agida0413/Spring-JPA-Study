@@ -12,9 +12,23 @@ public class Member extends BaseEntity {
     @Column(name ="email",length = 300,unique = true)
     private String email;
 
+    @OneToMany(mappedBy = "member",cascade = CascadeType.ALL , orphanRemoval = true)
+    private List<Board> board;
+
+    public List<Board> getBoard() {
+        return board;
+    }
+
+    public void addBoard(Board board){
+        this.board.add(board);
+        board.setMember(this);
+    }
+
+
     public String getUserId() {
         return userId;
     }
+
 
     public void setUserId(String userId) {
         this.userId = userId;

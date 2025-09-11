@@ -12,7 +12,7 @@ public abstract class Board extends BaseEntity{
     @Column(name="title" , length = 200 )
     private String title;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id")
     private Member member;
 
@@ -39,4 +39,7 @@ public abstract class Board extends BaseEntity{
     public void setTitle(String title) {
         this.title = title;
     }
+    @OneToOne
+    @JoinColumn(name = "board_id")
+    public BoardDetail boardDetail;
 }

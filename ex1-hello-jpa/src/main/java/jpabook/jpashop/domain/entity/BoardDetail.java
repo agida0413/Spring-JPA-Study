@@ -8,13 +8,6 @@ public class BoardDetail extends BaseEntity{
     @Lob
     private String detailContent;
 
-    public Board getBoard() {
-        return board;
-    }
-
-    public void setBoard(Board board) {
-        this.board = board;
-    }
 
     public String getDetailContent() {
         return detailContent;
@@ -24,7 +17,5 @@ public class BoardDetail extends BaseEntity{
         this.detailContent = detailContent;
     }
 
-    @OneToOne
-    @JoinColumn(name = "board_id")
-    private Board board;
+
 }

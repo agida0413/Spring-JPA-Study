@@ -8,7 +8,7 @@ import jakarta.persistence.Persistence;
 import jpabook.jpashop.domain.entity.*;
 
 public class JpaMain {
-    public static void main(String[] args) {
+    public static void main(String[] args, EntityManagerFactory emf) {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("hello");
 
         EntityManager em = emf.createEntityManager();
@@ -68,17 +68,43 @@ public class JpaMain {
 //            em.persist(boardDetail2);
 
 
-            Member member = new Member();
-            member.setUserId("kim");
-            member.setEmail("yon@naver");
+//            Member member = new Member();
+//            member.setUserId("kim");
+//            member.setEmail("yon@naver");
+//
+//            Board board = em.find(Board.class, 1l);
+//
+//            LIkeC lIkeC = new LIkeC();
+//            lIkeC.setMember(member);
+//            lIkeC.setBoard(board);
+//            em.persist(member);
+//            em.persist(lIkeC);
 
-            Board board = em.find(Board.class, 1l);
+//            Reply reply = new Reply();
+//            reply.setReply("댓글 1 ");
+//
+//            Reply reply2 = new Reply();
+//            reply2.setReply("댓글 2 ");
+//
+//            FreeBoard board = em.find(FreeBoard.class, 352l);
+//
+//            reply.setBoard(board);
+//            reply2.setBoard(board);
+//
+//            board.setFreeContent("수정햇슴");
+//
+//            em.persist(reply2);
+//            em.persist(reply);
 
-            LIkeC lIkeC = new LIkeC();
-            lIkeC.setMember(member);
-            lIkeC.setBoard(board);
-            em.persist(member);
-            em.persist(lIkeC);
+
+//            FreeBoard freeBoard = em.find(FreeBoard.class,2l);
+//
+//            em.remove(freeBoard);
+
+
+//        FreeBoard newBoard = new FreeBoard();
+//        newBoard.setFreeContent("ddddd");
+//
 
 
             tx.commit();
