@@ -11,6 +11,7 @@ spring:
       hibernate:
         format_sql: true   # ✅ 들여쓰기 맞게
         # show_sql: true   # 옵션 필요하면 여기에
+        default_batch_fetch_size: 100
 logging:
   level:
     org.hibernate.SQL: debug
