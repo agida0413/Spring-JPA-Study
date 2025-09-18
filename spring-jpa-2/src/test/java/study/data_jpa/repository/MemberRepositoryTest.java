@@ -7,6 +7,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 import study.data_jpa.entity.Member;
 
+import java.util.List;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.*;
@@ -19,12 +20,26 @@ class MemberRepositoryTest {
 
     @Test
     public void testMember(){
-        Member member = new Member("nameaa");
-        Member saveMember = memberRepository.save(member);
+//        System.out.println("memberRepository.getClass() = " + memberRepository.getClass());
+//        Member member = new Member("nameaa");
+//        Member saveMember = memberRepository.save(member);
+//
+//        Member findMember = memberRepository.findById(member.getId()).get();
+//
+//        assertThat(findMember.getId()).isEqualTo(saveMember.getId());
+////        assertThat(findMember.getUserName()).isEqualTo(saveMember.getUserName());
 
-        Member findMember = memberRepository.findById(member.getId()).get();
+        Member m1 = new Member("AAA", 10);
+        Member m2 = new Member("AAA", 20);
 
-        assertThat(findMember.getId()).isEqualTo(saveMember.getId());
-        assertThat(findMember.getUserName()).isEqualTo(saveMember.getUserName());
+        memberRepository.save(m1);
+        memberRepository.save(m2);
+
+        List<Member> result = memberRepository.findByUsernameAndAgeGreaterThan("AAA", 15);
+        System.out.println("result.size() = " + result.size());
+        assertThat(result.get(0).getUsername()).isEqualTo("AAA");
+        assertThat(result.get(0).getAge()).isEqualTo(20);
+        assertThat(result.size()).isEqualTo(1);
+
     }
 }
