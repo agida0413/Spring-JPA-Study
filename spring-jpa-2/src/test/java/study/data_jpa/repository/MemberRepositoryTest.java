@@ -201,10 +201,49 @@ class MemberRepositoryTest {
         em.flush();
         em.clear();
 
-        List<Member> all = memberRepository.findMemberFetchJoin();
+        List<Member> all = memberRepository.findByUsername("member1");
         for (Member member : all) {
             System.out.println("member.getUsername() = " + member.getUsername());
             System.out.println("member.getTeam().getName() = " + member.getTeam().getName());
         }
+    }
+
+    @Test
+    public void queryHint(){
+        Member member1 = new Member("member1", 10);
+        memberRepository.save(member1);
+        em.flush();
+        em.clear();
+
+        Member findMember = memberRepository.findReadOnlyByUsername("member1");
+        findMember.setUsername("member2");
+
+        em.flush();
+
+    }
+
+
+
+    @Test
+    public void test33(){
+        memberRepository.findMemberCustom();
+    }
+
+
+    @Test
+    public void JpaEvnet() throws InterruptedException {
+        Member member1 = new Member("member1", 10);
+        memberRepository.save(member1);
+
+
+        Thread.sleep(100);
+         em.flush();
+         em.clear();
+        Member member = memberRepository.findById(member1.getId()).get();
+
+        System.out.println(member.getLastModifiedDate());
+        System.out.println(member.getCreatedDate());
+        System.out.println(member.getCreatedBy());
+        System.out.println(member.getLastModifiedBy());
     }
 }
